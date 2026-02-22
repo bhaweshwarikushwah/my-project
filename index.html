@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>STRINK | Pro Dash</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <div id="success-toast" class="toast">
+            <i data-lucide="check-circle"></i>
+            <span id="toast-msg">Order Executed</span>
+        </div>
+
+        <nav class="mobile-menu">
+            <div class="nav-item active"><i data-lucide="layout-dashboard"></i></div>
+            <div class="nav-item"><i data-lucide="line-chart"></i></div>
+            <div class="center-fab" onclick="quickOrder('Buy')"><i data-lucide="zap"></i></div>
+            <div class="nav-item"><i data-lucide="wallet"></i></div>
+            <div class="nav-item"><i data-lucide="user"></i></div>
+        </nav>
+
+        <main class="app-content">
+            <header class="app-header">
+                <div class="brand">STRINK<span>.</span></div>
+                <div class="search-wrap">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="coin-search" placeholder="Search..." onkeyup="filterCoins()">
+                </div>
+            </header>
+
+            <section class="balance-section">
+                <div class="modern-bal-card">
+                    <div class="bal-info">
+                        <p class="bal-subtitle">Total Portfolio Balance</p>
+                        <h1 id="user-balance">$12,450.80</h1>
+                    </div>
+                    <div class="bal-stats">
+                        <div class="stat-pill">
+                            <i data-lucide="trending-up"></i>
+                            <span>+$420.50</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="bento-container">
+                <div class="card chart-bento">
+                    <div class="card-header-flex">
+                        <div id="active-coin-name">Bitcoin</div>
+                        <h4 id="active-coin-price">$0.00</h4>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    <div class="trade-controls-wrapper">
+                        <div class="amount-input-group">
+                            <span>$</span>
+                            <input type="number" id="trade-amount-input" value="100">
+                        </div>
+                        <div class="quick-trade-btns">
+                            <button class="trade-btn buy-btn" onclick="quickOrder('Buy')">BUY</button>
+                            <button class="trade-btn sell-btn" onclick="quickOrder('Sell')">SELL</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card history-bento">
+                    <h5>Recent Activity</h5>
+                    <div id="trade-history" class="history-list">
+                        <div class="empty-msg">No recent trades</div>
+                    </div>
+                </div>
+
+                <div class="card market-bento">
+                    <h5>Markets</h5>
+                    <div id="market-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
